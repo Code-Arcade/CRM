@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IIPL CRM Dashboard - Advanced Analytics</title>
+    <meta name="description" content="Comprehensive CRM Dashboard for IIPL Inquiry Management and Analytics">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z" fill="currentColor" />
+                    </svg>
+                </div>
+                <div>
+                    <h1>IIPL CRM Dashboard</h1>
+                    <p class="subtitle">Advanced Inquiry Management & Analytics</p>
+                </div>
+            </div>
+            <div class="header-actions">
+                <button class="btn-icon" id="refreshBtn" title="Refresh Data">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M17.65 6.35A7.958 7.958 0 0012 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0112 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"
+                            fill="currentColor" />
+                    </svg>
+                </button>
+                <button class="btn-icon" id="exportBtn" title="Export Data">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M19 12v7H5v-7H3v7c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-7h-2zm-6 .67l2.59-2.58L17 11.5l-5 5-5-5 1.41-1.41L11 12.67V3h2v9.67z"
+                            fill="currentColor" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Stats Overview -->
+        <section class="stats-section">
+            <div class="stat-card">
+                <div class="stat-icon total">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"
+                            fill="currentColor" />
+                    </svg>
+                </div>
+                <div class="stat-content">
+                    <h3 id="totalInquiries">0</h3>
+                    <p>Total Inquiries</p>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon awarded">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"
+                            fill="currentColor" />
+                    </svg>
+                </div>
+                <div class="stat-content">
+                    <h3 id="awardedCount">0</h3>
+                    <p>Awarded</p>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon estimation">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"
+                            fill="currentColor" />
+                    </svg>
+                </div>
+                <div class="stat-content">
+                    <h3 id="estimationCount">0</h3>
+                    <p>Estimations Sent</p>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon dropped">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+                            fill="currentColor" />
+                    </svg>
+                </div>
+                <div class="stat-content">
+                    <h3 id="droppedCount">0</h3>
+                    <p>Dropped</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Search and Filter Section -->
+        <section class="search-section">
+            <div class="search-container">
+                <div class="search-box">
+                    <svg class="search-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+                            fill="currentColor" />
+                    </svg>
+                    <input type="text" id="searchInput"
+                        placeholder="Search by inquiry ID, client, architect, sector...">
+                </div>
+
+                <div class="filter-group">
+                    <select id="statusFilter" class="filter-select">
+                        <option value="">All Status</option>
+                        <option value="Awarded">Awarded</option>
+                        <option value="Dropped">Dropped</option>
+                        <option value="Estimation Sent">Estimation Sent</option>
+                        <option value="Lead">Lead</option>
+                    </select>
+
+                    <select id="sectorFilter" class="filter-select">
+                        <option value="">All Sectors</option>
+                        <option value="Residential">Residential</option>
+                        <option value="WorkSpace">WorkSpace</option>
+                        <option value="Hotel">Hotel</option>
+                        <option value="Commercial">Commercial</option>
+                    </select>
+
+                    <select id="typeFilter" class="filter-select">
+                        <option value="">All Types</option>
+                        <option value="ARCHITECT">Architect</option>
+                        <option value="PMC">PMC</option>
+                        <option value="DIRECT CLIENT">Direct Client</option>
+                    </select>
+
+                    <select id="favourFilter" class="filter-select">
+                        <option value="">All Priority</option>
+                        <option value="HIGH">High</option>
+                        <option value="NEUTRAL">Neutral</option>
+                    </select>
+
+                    <button class="btn-reset" id="resetFilters">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"
+                                fill="currentColor" />
+                        </svg>
+                        Reset
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Data Table -->
+        <section class="table-section">
+            <div class="table-header">
+                <h2>Inquiry Records</h2>
+                <div class="table-info">
+                    <span id="recordCount">Showing 0 of 0 records</span>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <table id="inquiryTable">
+                    <thead>
+                        <tr>
+                            <th>Status</th>
+                            <th>Inquiry ID</th>
+                            <th>Priority</th>
+                            <th>Type</th>
+                            <th>Sector</th>
+                            <th>Inquiry Date</th>
+                            <th>Estimation Amount</th>
+                            <th>Client Details</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                        <!-- Data will be populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="pagination" id="pagination">
+                <!-- Pagination will be generated by JavaScript -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Detail Modal -->
+    <div class="modal" id="detailModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Inquiry Details</h2>
+                <button class="modal-close" id="closeModal">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+                            fill="currentColor" />
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Details will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loader"></div>
+        <p>Loading data...</p>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <a href="https://www.youtube.com/channel/UC6McNBm7VIaLlwAjKOP5_VA" target="_blank" class="footer-credit"
+            title="Sakthivel (Full Stack Developer)">
+            Developed by CodeArcade
+        </a>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
